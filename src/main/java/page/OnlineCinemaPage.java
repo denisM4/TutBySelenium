@@ -40,6 +40,7 @@ public class OnlineCinemaPage extends Driver {
         scrollToElement(webDriver, genresDropDownButton);
         findByCss(genresDropDownButton).click();
         findInListByValue(findAll("div.active a span"), name).click();
+        waitUntilLabelAppears();
         waitUntilDescriptionIsLoaded();
         return this;
     }

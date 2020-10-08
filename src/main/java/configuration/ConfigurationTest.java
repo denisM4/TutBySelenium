@@ -20,7 +20,7 @@ public class ConfigurationTest {
 
         driver = new ChromeDriver();
         driver.get("https://www.tut.by/");
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(12, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 10);

@@ -12,6 +12,9 @@ import java.util.List;
 public class Util extends Driver {
 
     private WebDriverWait wait;
+    private final LogUtils logger = LogUtils.getInstance();
+    int pageNumber = 0;
+
 
     public Util(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -27,19 +30,20 @@ public class Util extends Driver {
     private boolean compareDescriptionWithName(String elementsLocator, String name) {
 
         boolean isContains = false;
-        int filmNumber = 0;
+
         waitUntilDescriptionIsLoaded();
         List<WebElement> elements = findAll(elementsLocator);
 
         for (WebElement element : elements) {
             isContains = element.getText().contains(name);
+
             if (isContains == false) {
                 return false;
             }
-            filmNumber += 1;
-            System.out.println(element.getText());
+            logger.logInfo("Description element - " + element.getText());
         }
-        System.out.println("---------------------------");
+
+        logger.logInfo("--------------------------- Page number - " + pageNumber + " ---------------------------");
         return isContains;
     }
 
@@ -52,6 +56,7 @@ public class Util extends Driver {
      */
     public boolean checkTextOnAllPages(String filmDescription, String genre, String nextPageButtonLocator) {
 
+        pageNumber = 0;
         boolean assertResult;
 
         while (true) {
@@ -63,6 +68,8 @@ public class Util extends Driver {
             } catch (StaleElementReferenceException | NoSuchElementException ex) {
                 break;
             }
+            pageNumber += 1;
+
         }
         return assertResult;
     }

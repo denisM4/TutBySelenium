@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <properties>
+        <property name="pattern">%m%n</property>
+    </properties>
+
+    <appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+    </appenders>
+
+    <loggers>
+        <root level="All">
+            <AppenderRef ref="ConsoleAppender"/>
+        </root>
+    </loggers>
+
+</configuration>

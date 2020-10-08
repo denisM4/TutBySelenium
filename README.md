@@ -6,6 +6,7 @@
 - Selenium
 - TestNG
 - Maven
+- Log4j
 
 
 # To run:
